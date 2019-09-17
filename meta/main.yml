@@ -1,0 +1,23 @@
+galaxy_info:
+  role_name: security
+  author: Damian Lewis
+  description: Security configuration.
+  license: MIT
+
+  min_ansible_version: 2.5
+
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags:
+  - system
+  - security
+  - ssh
+  - hardening
+
+dependencies: []

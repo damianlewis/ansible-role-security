@@ -13,3 +13,17 @@ security_ssh_use_dns: no
 security_ssh_challenge_response_authentication: no
 security_ssh_gss_api_authentication: no
 security_ssh_x11_forwarding: no
+
+# APT::Periodic interval settings
+security_apt_periodic_update_package_list: 1
+security_apt_periodic_download_upgradable_packages: 1
+security_apt_periodic_autoclean: 1
+security_apt_periodic_unattended_upgrades: 7
+
+# Unattended-Upgrade settings
+security_unattended_upgrade_blacklist: []
+security_unattended_upgrade_remove_unused_dependencies: no
+security_unattended_upgrade_mail_to: ''
+security_unattended_upgrade_mail_on_error: yes
+security_unattended_upgrade_reboot: no
+security_unattended_upgrade_reboot_time: '02:00'

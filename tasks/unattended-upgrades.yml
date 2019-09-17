@@ -1,0 +1,13 @@
+---
+- name: Ensure unattended-upgrades package is installed
+  apt:
+    name: "{{ security_unattended_upgrades_package }}"
+
+- name: Configure unattended upgrades
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ security_apt_conf_directory_path }}/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  loop: "{{ security_unattended_upgrades_configuration_files }}"

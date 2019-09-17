@@ -1,0 +1,15 @@
+---
+# SSH hardening
+security_ssh_port: 22
+security_ssh_permit_root_login: no
+security_ssh_password_authentication: no
+security_ssh_permit_empty_password: no
+security_ssh_max_auth_retries: 2
+security_ssh_max_sessions: 10
+security_ssh_allow_agent_forwarding: no
+security_ssh_allow_tcp_forwarding: no
+security_ssh_tcp_keep_alive: no
+security_ssh_use_dns: no
+security_ssh_challenge_response_authentication: no
+security_ssh_gss_api_authentication: no
+security_ssh_x11_forwarding: no

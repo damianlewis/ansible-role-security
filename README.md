@@ -60,20 +60,22 @@ The APT::Periodic configuration settings.
 - `security_apt_periodic_unattended_upgrades:integer` - Install the available upgrades every numnber of days.
 
 ```yaml
-security_unattended_upgrade_blacklist: []
-security_unattended_upgrade_remove_unused_dependencies: no
-security_unattended_upgrade_mail_to: ''
-security_unattended_upgrade_mail_on_error: no
-security_unattended_upgrade_reboot: no
-security_unattended_upgrade_reboot_time: '02:00'
+security_unattended_upgrades_enabled: yes
+security_unattended_upgrades_blacklist: []
+security_unattended_upgrades_remove_unused_dependencies: no
+security_unattended_upgrades_mail_to: ''
+security_unattended_upgrades_mail_on_error: no
+security_unattended_upgrades_reboot: no
+security_unattended_upgrades_reboot_time: '02:00'
 ```
-The Unattended-Upgrade configuration settings.
-- `security_unattended_upgrade_blacklist:list` - A list of packages that will not be automatically upgraded.
-- `security_unattended_upgrade_remove_unused_dependencies:boolean` - Specifies whether new unused dependencies should be removed after an upgrade (equivalent to apt-get autoremove).
-- `security_unattended_upgrade_mail_to:string` - Send email to this address for problems or packages upgrades. If empty then no email is sent.
-- `security_unattended_upgrade_mail_on_error:boolean` - Specifies whether emails should only be sent on errors. Default is to always send an email if `security_unattended_upgrade_mail_to` is set.
-- `security_unattended_upgrade_reboot:boolean` - Specifies whether an automatic reboot should be performed after packages are upgraded.
-- `security_unattended_upgrade_reboot_time:string` - If automatic reboot is enabled and needed, reboot at the specific time. Use the value 'now' to immediately reboot after upgrades.
+The unattended-upgrades configuration settings.
+- `security_unattended_upgrades_enabled:boolean` - Specifies whether unattended-upgrades should be installed.
+- `security_unattended_upgrades_blacklist:list` - A list of packages that will not be automatically upgraded.
+- `security_unattended_upgrades_remove_unused_dependencies:boolean` - Specifies whether new unused dependencies should be removed after an upgrade (equivalent to apt-get autoremove).
+- `security_unattended_upgrades_mail_to:string` - Send email to this address for problems or packages upgrades. If empty then no email is sent.
+- `security_unattended_upgrades_mail_on_error:boolean` - Specifies whether emails should only be sent on errors. Default is to always send an email if `security_unattended_upgrades_mail_to` is set.
+- `security_unattended_upgrades_reboot:boolean` - Specifies whether an automatic reboot should be performed after packages are upgraded.
+- `security_unattended_upgrades_reboot_time:string` - If automatic reboot is enabled and needed, reboot at the specific time. Use the value 'now' to immediately reboot after upgrades.
 
 ## Dependencies
 None.
@@ -87,10 +89,10 @@ None.
     security_ssh_permit_root_login: yes
     security_ssh_password_authentication: yes
     security_apt_periodic_autoclean: 21
-    security_unattended_upgrade_blacklist:
+    security_unattended_upgrades_blacklist:
     - vim
     - libc6
-    security_unattended_upgrade_reboot_time: 'now'
+    security_unattended_upgrades_reboot_time: 'now'
 
   tasks:
   - import_role:

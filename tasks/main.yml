@@ -4,3 +4,4 @@
 
 # Unattended upgrades
 - include_tasks: unattended-upgrades.yml
+  when: security_unattended_upgrades_enabled | bool

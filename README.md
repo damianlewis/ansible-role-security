@@ -8,23 +8,44 @@ None.
 Available variables are listed below, along with their default values.
 
 ```yaml
-security_ssh_port: 22
-```
-The port on which SSH should listen. To prevent mis-configuring you should choose a port from the dynamic/private ports range: 49152-65535.
-
-```yaml
-security_ssh_permit_root_login: no
-security_ssh_password_authentication: no
-security_ssh_permit_empty_password: no
 security_ssh_allow_agent_forwarding: no
 security_ssh_allow_tcp_forwarding: no
+security_ssh_challenge_response_authentication: no
+security_ssh_client_alive_count: 3
+security_ssh_client_alive_interval: 300
+security_ssh_gss_api_authentication: no
+security_ssh_max_auth_retries: 2
+security_ssh_max_sessions: 10
+security_ssh_password_authentication: no
+security_ssh_permit_empty_password: no
+security_ssh_permit_root_login: no
+security_ssh_port: 22
+security_ssh_print_motd: no
+security_ssh_protocol: 2
 security_ssh_tcp_keep_alive: no
 security_ssh_use_dns: no
-security_ssh_challenge_response_authentication: no
-security_ssh_gss_api_authentication: no
+security_ssh_use_pam: yes
 security_ssh_x11_forwarding: no
 ```
-Security settings for SSH. It's best to leave these set to false, however during initial server configuration when key-based authentication isn't configured, some of these settings can initially be set set to true.
+Security settings for SSH.
+- `security_ssh_allow_agent_forwarding:boolean` - Specifies whether ssh-agent forwarding is permitted.
+- `security_ssh_allow_tcp_forwarding:boolean` - Specifies whether TCP forwarding is permitted.
+- `security_ssh_challenge_response_authentication:boolean` - Specifies whether challenge-response authentication is allowed.
+- `security_ssh_client_alive_count:int` - Sets the number of client alive messages that may be sent before the client is disconected.
+- `security_ssh_client_alive_interval:int` - Sets a timeout interval in seconds after which if no activity is detected from the client, a message requesting a response from the client will be sent. Set to '0' to disable this feature.
+- `security_ssh_gss_api_authentication:boolean` - Specifies whether user authentication based on GSSAPI is allowed.
+- `security_ssh_max_auth_retries:int` - Specifies the maximum number of authentication attempts permitted per connection.
+- `security_ssh_max_sessions:int` - Specifies the maximum number of open sessions permitted per network connection.
+- `security_ssh_password_authentication:boolean` - Specifies whether password authentication is allowed. When SSH keys are being used, password authetication can be disabled.
+- `security_ssh_permit_empty_password:boolean` - Specifies whether users without a password can log in.
+- `security_ssh_permit_root_login:boolean` - Specifies whether the root user can log in.
+- `security_ssh_port:int` - The port on which SSH should listen. To prevent mis-configuring you should choose a port from the dynamic/private ports range: 49152-65535.
+- `security_ssh_print_motd:boolean` - Specifies whether the MOTD message should be printed when a user logs in interactively.
+- `security_ssh_protocol:int` - Specifies the protocol version to use. The possible values are '1' and '2'.
+- `security_ssh_tcp_keep_alive:boolean` - Specifies whether the system should send TCP keepalive messages.
+- `security_ssh_use_dns:boolean` - Specifies whether sshd should look up the remote host name and check that the resolved host name for the remote IP address maps back to the very same IP address.
+- `security_ssh_use_pam:boolean` - Specifies whether the Pluggable Authentication Module interface is enabled.
+- `security_ssh_x11_forwarding:boolean` - Specifies whether X11 forwarding is permitted.
 
 ```yaml
 security_apt_periodic_update_package_list: 1

@@ -1,0 +1,11 @@
+---
+- name: Ensure Fail2ban is installed
+  apt:
+    name: "{{ security_fail2ban_package }}"
+    update_cache: yes #Force a package cache update, as 'fail2ban' isn't available until the apt cache is updated
+
+- name: Ensure Fail2ban is running
+  service:
+    name: "{{ security_fail2ban_package }}"
+    state: started
+    enabled: yes

@@ -1,7 +1,7 @@
 galaxy_info:
   role_name: security
   author: Damian Lewis
-  description: Security configuration.
+  description: Installs software and configures security settings.
   license: MIT
 
   min_ansible_version: 2.5
@@ -15,6 +15,7 @@ galaxy_info:
     - all
 
   galaxy_tags:
+  - fail2ban
   - hardening
   - security
   - ssh

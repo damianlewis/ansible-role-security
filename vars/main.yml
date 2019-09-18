@@ -7,3 +7,5 @@ security_unattended_upgrades_package: unattended-upgrades
 security_unattended_upgrades_configuration_files:
 - 10periodic
 - 50unattended-upgrades
+
+security_fail2ban_package: fail2ban

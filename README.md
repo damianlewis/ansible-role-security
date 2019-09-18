@@ -1,5 +1,5 @@
 # Ansible Role: Security
-Server security configuration role.
+Role for installing software and configuring security settings.
 
 ## Requirements
 None.
@@ -54,10 +54,10 @@ security_apt_periodic_autoclean: 7
 security_apt_periodic_unattended_upgrades: 1
 ```
 The APT::Periodic configuration settings.
-- `security_apt_periodic_update_package_list:integer` - Update the apt packages cache every numnber of days.
-- `security_apt_periodic_download_upgradable_packages:integer` - Downloading packages that can be upgraded every numnber of days.
-- `security_apt_periodic_autoclean:integer` - Removing redundant packages using apt's 'autoclean' every numnber of days.
-- `security_apt_periodic_unattended_upgrades:integer` - Install the available upgrades every numnber of days.
+- `security_apt_periodic_update_package_list:integer` - Update the apt packages cache every `security_apt_periodic_update_package_list` numnber of days.
+- `security_apt_periodic_download_upgradable_packages:integer` - Downloading packages that can be upgraded every `security_apt_periodic_download_upgradable_packages`numnber of days.
+- `security_apt_periodic_autoclean:integer` - Removing redundant packages using apt's 'autoclean' every `security_apt_periodic_autoclean` numnber of days.
+- `security_apt_periodic_unattended_upgrades:integer` - Install the available upgrades every `security_apt_periodic_unattended_upgrades` numnber of days.
 
 ```yaml
 security_unattended_upgrades_enabled: yes
@@ -76,6 +76,12 @@ The unattended-upgrades configuration settings.
 - `security_unattended_upgrades_mail_on_error:boolean` - Specifies whether emails should only be sent on errors. Default is to always send an email if `security_unattended_upgrades_mail_to` is set.
 - `security_unattended_upgrades_reboot:boolean` - Specifies whether an automatic reboot should be performed after packages are upgraded.
 - `security_unattended_upgrades_reboot_time:string` - If automatic reboot is enabled and needed, reboot at the specific time. Use the value 'now' to immediately reboot after upgrades.
+
+```yaml
+security_fail2ban_enabled: yes
+```
+Fail2ban settings
+- `security_fail2ban_enabled:boolean` - Specifies whether Fail2ban should be installed.
 
 ## Dependencies
 None.

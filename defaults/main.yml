@@ -33,3 +33,6 @@ security_unattended_upgrades_mail_to: ''
 security_unattended_upgrades_mail_on_error: no
 security_unattended_upgrades_reboot: no
 security_unattended_upgrades_reboot_time: '02:00'
+
+# Fail2ban settings
+security_fail2ban_enabled: yes

@@ -1,5 +1,5 @@
 ---
-- name: Harden SSH configuration
+- name: Harden SSH
   lineinfile:
     dest: "{{ security_ssh_config_path }}"
     regexp: "{{ item.regexp }}"

@@ -1,3 +1,6 @@
 ---
 # SSH hardening
 - include_tasks: ssh-hardening.yml
+
+# Unattended upgrades
+- include_tasks: unattended-upgrades.yml

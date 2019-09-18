@@ -15,9 +15,10 @@ galaxy_info:
     - all
 
   galaxy_tags:
-  - system
+  - hardening
   - security
   - ssh
-  - hardening
+  - system
+  - unattended-upgrades
 
 dependencies: []

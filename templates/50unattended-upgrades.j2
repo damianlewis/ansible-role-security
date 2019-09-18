@@ -1,0 +1,34 @@
+Unattended-Upgrade::Allowed-Origins {
+        "${distro_id}:${distro_codename}";
+        "${distro_id}:${distro_codename}-security";
+        // Extended Security Maintenance; doesn't necessarily exist for
+        // every release and this system may not have it installed, but if
+        // available, the policy for updates is such that unattended-upgrades
+        // should also install from here by default.
+        "${distro_id}ESM:${distro_codename}";
+//      "${distro_id} ${distro_codename}-updates";
+//      "${distro_id}:${distro_codename}-proposed";
+//      "${distro_id}:${distro_codename}-backports";
+};
+
+Unattended-Upgrade::Package-Blacklist {
+{% for package in security_unattended_upgrades_blacklist %}
+      "{{ package }}";
+{% endfor %}
+};
+
+{% if security_unattended_upgrades_mail_to %}
+Unattended-Upgrade::Mail "{{ security_unattended_upgrades_mail_to }}";
+{% if security_unattended_upgrades_mail_on_error %}
+Unattended-Upgrade::MailOnlyOnError "true";
+{% endif %}
+{% endif %}
+
+{% if security_unattended_upgrades_remove_unused_dependencies %}
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+{% endif %}
+
+{% if security_unattended_upgrades_reboot %}
+Unattended-Upgrade::Automatic-Reboot "true";
+Unattended-Upgrade::Automatic-Reboot-Time "{{ security_unattended_upgrades_reboot_time }}";
+{% endif %}

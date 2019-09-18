@@ -1,0 +1,25 @@
+galaxy_info:
+  role_name: security
+  author: Damian Lewis
+  description: Installs software and configures security settings.
+  license: MIT
+
+  min_ansible_version: 2.5
+
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags:
+  - fail2ban
+  - hardening
+  - security
+  - ssh
+  - system
+  - unattended-upgrades
+
+dependencies: []

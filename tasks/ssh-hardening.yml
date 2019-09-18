@@ -1,0 +1,47 @@
+---
+- name: Harden SSH
+  lineinfile:
+    dest: "{{ security_ssh_config_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    create: yes
+    validate: '/usr/sbin/sshd -T -C user=root -C host=localhost -C addr=localhost -f %s'
+  loop:
+  - regexp: "^#?AllowAgentForwarding"
+    line: "AllowAgentForwarding {{ security_ssh_allow_agent_forwarding | ternary('yes', 'no') }}"
+  - regexp: "^#?AllowTcpForwarding"
+    line: "AllowTcpForwarding {{ security_ssh_allow_tcp_forwarding | ternary('yes', 'no') }}"
+  - regexp: "^#?ChallengeResponseAuthentication"
+    line: "ChallengeResponseAuthentication {{ security_ssh_challenge_response_authentication | ternary('yes', 'no') }}"
+  - regexp: "^#?ClientAliveCountMax"
+    line: "ClientAliveCountMax {{ security_ssh_client_alive_count }}"
+  - regexp: "^#?ClientAliveInterval"
+    line: "ClientAliveInterval {{ security_ssh_client_alive_interval }}"
+  - regexp: "^#?GSSAPIAuthentication"
+    line: "GSSAPIAuthentication {{ security_ssh_gss_api_authentication | ternary('yes', 'no') }}"
+  - regexp: "^#?MaxAuthTries"
+    line: "MaxAuthTries {{ security_ssh_max_auth_retries }}"
+  - regexp: "^#?MaxSessions"
+    line: "MaxSessions {{ security_ssh_max_sessions }}"
+  - regexp: "^#?PasswordAuthentication"
+    line: "PasswordAuthentication {{ security_ssh_password_authentication | ternary('yes', 'no') }}"
+  - regexp: "^#?PermitEmptyPasswords"
+    line: "PermitEmptyPasswords {{ security_ssh_permit_empty_password | ternary('yes', 'no') }}"
+  - regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin {{ security_ssh_permit_root_login | ternary('yes', 'no') }}"
+  - regexp: "^#?Port"
+    line: "Port {{ security_ssh_port }}"
+  - regexp: "^#?PrintMotd"
+    line: "PrintMotd {{ security_ssh_print_motd | ternary('yes', 'no')}}"
+  - regexp: "^#?Protocol"
+    line: "Protocol {{ security_ssh_protocol }}"
+  - regexp: "^#?TCPKeepAlive"
+    line: "TCPKeepAlive {{ security_ssh_tcp_keep_alive | ternary('yes', 'no') }}"
+  - regexp: "^#?UseDNS"
+    line: "UseDNS {{ security_ssh_use_dns | ternary('yes', 'no') }}"
+  - regexp: "^#?UsePAM"
+    line: "UsePAM {{ security_ssh_use_pam | ternary('yes', 'no') }}"
+  - regexp: "^#?X11Forwarding"
+    line: "X11Forwarding {{ security_ssh_x11_forwarding | ternary('yes', 'no') }}"
+  notify: restart ssh

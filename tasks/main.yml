@@ -1,0 +1,11 @@
+---
+# SSH hardening
+- include_tasks: ssh-hardening.yml
+
+# Install and configure unattended-upgrades
+- include_tasks: unattended-upgrades.yml
+  when: security_unattended_upgrades_enabled | bool
+
+# Install Fail2ban
+- include_tasks: fail2ban.yml
+  when: security_fail2ban_enabled | bool

@@ -1,0 +1,11 @@
+---
+security_ssh_config_path: /etc/ssh/sshd_config
+security_sshd_name: ssh
+
+security_apt_conf_directory_path: /etc/apt/apt.conf.d
+security_unattended_upgrades_package: unattended-upgrades
+security_unattended_upgrades_configuration_files:
+- 10periodic
+- 50unattended-upgrades
+
+security_fail2ban_package: fail2ban

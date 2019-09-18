@@ -1,0 +1,38 @@
+---
+# SSH hardening
+security_ssh_allow_agent_forwarding: no
+security_ssh_allow_tcp_forwarding: no
+security_ssh_challenge_response_authentication: no
+security_ssh_client_alive_count: 3
+security_ssh_client_alive_interval: 300
+security_ssh_gss_api_authentication: no
+security_ssh_max_auth_retries: 2
+security_ssh_max_sessions: 10
+security_ssh_password_authentication: no
+security_ssh_permit_empty_password: no
+security_ssh_permit_root_login: no
+security_ssh_port: 22
+security_ssh_print_motd: no
+security_ssh_protocol: 2
+security_ssh_tcp_keep_alive: no
+security_ssh_use_dns: no
+security_ssh_use_pam: yes
+security_ssh_x11_forwarding: no
+
+# APT::Periodic interval settings
+security_apt_periodic_update_package_list: 1
+security_apt_periodic_download_upgradable_packages: 1
+security_apt_periodic_autoclean: 7
+security_apt_periodic_unattended_upgrades: 1
+
+# unattended-upgrades settings
+security_unattended_upgrades_enabled: yes
+security_unattended_upgrades_blacklist: []
+security_unattended_upgrades_remove_unused_dependencies: no
+security_unattended_upgrades_mail_to: ''
+security_unattended_upgrades_mail_on_error: no
+security_unattended_upgrades_reboot: no
+security_unattended_upgrades_reboot_time: '02:00'
+
+# Fail2ban settings
+security_fail2ban_enabled: yes

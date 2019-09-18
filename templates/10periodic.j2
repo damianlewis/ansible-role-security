@@ -1,0 +1,4 @@
+APT::Periodic::Update-Package-Lists "{{ security_apt_periodic_update_package_list | int(1) }}";
+APT::Periodic::Download-Upgradeable-Packages "{{ security_apt_periodic_download_upgradable_packages | int }}";
+APT::Periodic::AutocleanInterval "{{ security_apt_periodic_autoclean | int }}";
+APT::Periodic::Unattended-Upgrade "{{ security_apt_periodic_unattended_upgrades | int }}";
